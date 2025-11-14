@@ -9,25 +9,20 @@
 #ifndef UNITY_IFX_H
 #define UNITY_IFX_H
 
+#define TEST_IFX(group, name)                                                                     \
+    static void TEST_##group##_##name##_(void);                                                   \
+    static void TEST_##group##_##name##_run(void);                                                \
+    void TEST_##group##_##name##_run(void) {                                                      \
+        UnityTestRunner(TEST_##group##_SETUP, TEST_##group##_##name##_, TEST_##group##_TEAR_DOWN, \
+                        "TEST(" #group ", " #name ")", TEST_GROUP_##group, #name, __FILE__,       \
+                        __LINE__);                                                                \
+    }                                                                                             \
+    void TEST_##group##_##name##_(void)
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/**
- * @brief Custom test macro implementation for IFX Arduino tests
- * 
- * This macro creates Unity-compatible test functions with proper
- * setup and teardown integration.
- */
-#define TEST_IFX_IMPL(group, name)                                                           \
-    static void TEST_##group##_##name##_(void);                                             \
-    static void TEST_##group##_##name##_run(void);                                          \
-    void TEST_##group##_##name##_run(void) {                                                \
-        UnityTestRunner(TEST_##group##_SETUP, TEST_##group##_##name##_, TEST_##group##_TEAR_DOWN, \
-                        "TEST(" #group ", " #name ")", TEST_GROUP_##group, #name, __FILE__,   \
-                        __LINE__);                                                           \
-    }                                                                                        \
-    static void TEST_##group##_##name##_(void)
 
 /**
  * @brief Output a single character (Unity callback)

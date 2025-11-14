@@ -7,7 +7,7 @@
  */
 
 #include <Arduino.h>
-#include "../include/unity_ifx.h"
+#include "unity_ifx.h"
 
 extern "C" {
 
