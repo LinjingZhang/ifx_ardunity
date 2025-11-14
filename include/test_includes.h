@@ -12,4 +12,7 @@
 // IFX addons
 #include "unity_ifx.h"
 
+// Arduino includes
+#include <Arduino.h>
+
 #endif // TEST_INCLUDES_H
