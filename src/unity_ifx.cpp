@@ -49,4 +49,23 @@ void readSerialAndRespond(void) {
     Serial.flush();
 }
 
+/**
+ * @brief Print array contents to Serial
+ * 
+ * Prints the contents of a uint8_t array in a formatted way for debugging.
+ * Output format: "title : [value1, value2, value3, ]"
+ */
+void printArray(const char *title, volatile uint8_t *data, uint8_t quantity) {
+    Serial.print(title);
+    Serial.print(" : [");
+
+    for (uint8_t i = 0; i < quantity; ++i) {
+        Serial.print(data[i]);
+        Serial.print(", ");
+    }
+
+    Serial.println("]");
+    Serial.flush();
+}
+
 } // extern "C"

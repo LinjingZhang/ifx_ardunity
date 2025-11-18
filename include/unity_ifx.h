@@ -50,8 +50,25 @@ void flushCharacter(void);
  */
 void readSerialAndRespond(void);
 
+/**
+ * @brief Print array contents to Serial
+ * 
+ * Utility function to print an array of uint8_t values for debugging.
+ * 
+ * @param title Title/label to print before the array
+ * @param data Pointer to the array data
+ * @param quantity Number of elements in the array
+ */
+void printArray(const char *title, volatile uint8_t *data, uint8_t quantity);
+
+
 #ifdef __cplusplus
 }
 #endif
+
+// Utility macros
+#define MILLISECONDS_PER_SECOND 1000
+#define MICROSECONDS_PER_SECOND 1000000
+#define MICROS_TO_MILLISECONDS(us) ((unsigned long)((double)(us) / (double)MILLISECONDS_PER_SECOND))
 
 #endif // UNITY_IFX_H
